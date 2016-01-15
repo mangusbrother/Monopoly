@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean class="com.mangusbrother.Game">
+        <property name="board">
+            <list>
+                <bean class="com.mangusbrother.Go"/>
+                <bean class="com.mangusbrother.Avenue">
+                    <constructor-arg name="name" value="Mediterranean Avenue"/>
+                    <constructor-arg name="price" value="60"/>
+                    <constructor-arg name="type" value="BROWN"/>
+                    <constructor-arg name="mortgagePrice" value="30"/>
+                    <constructor-arg name="groupSize" value="2"/>
+                    <constructor-arg name="buildingCost" value="50"/>
+                    <constructor-arg name="rent">
+                        <list>
+                            <value>2</value>
+                            <value>10</value>
+                            <value>30</value>
+                            <value>90</value>
+                            <value>160</value>
+                            <value>250</value>
+                        </list>
+                    </constructor-arg>
+                </bean>
+            </list>
+        </property>
+    </bean>
+</beans>
