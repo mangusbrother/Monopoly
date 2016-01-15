@@ -41,4 +41,25 @@ public class Player {
     public List<Property> getGroup(Property.PropertyType type) {
         return property.stream().filter(p -> p.getType() == type).collect(Collectors.toList());
     }
+
+    public void buy(Property p) throws InsufficientFundsException {
+        if (balance < p.getPrice())
+            throw new InsufficientFundsException(p.getPrice() - balance);
+
+        decrementBalance(p.getPrice());
+        property.add(p);
+    }
+
+    public void buyAuction(Property p, double price) throws InsufficientFundsException {
+        if (balance < price)
+            throw new InsufficientFundsException(price - balance);
+
+        decrementBalance(price);
+        property.add(p);
+    }
+
+    public void sellAuction(Property p, double price) {
+        incrementBalance(price);
+        property.remove(p);
+    }
 }

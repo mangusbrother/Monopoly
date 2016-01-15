@@ -1,12 +1,15 @@
 package com.mangusbrother;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @author samanthacatania
  * @since 15/01/2016.
  */
+
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class Railroad extends Property {
 
     public Railroad(String name) {
@@ -16,7 +19,7 @@ public class Railroad extends Property {
     @Override
     public double calculateRent(int dice) {
         Player owner = getOwner();
-        if (owner != null)
+        if (owner != null && !isMortgaged())
             switch (owner.getGroup(PropertyType.RAILROAD).size()) {
                 case 1:
                     return 25;

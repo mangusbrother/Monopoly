@@ -1,17 +1,17 @@
 package com.mangusbrother;
 
 public abstract class Card {
-	
-	public static final String SEPERATOR = ".";
+
+	public static final String SEPARATOR = ".";
 	public static final String CARD_NAME = "NAME";
 	
 	protected abstract String getIdentifier();
 	
 	public String getCardName() {
-		return PropertyHelper.getInstance().resolveValue(getIdentifier()+SEPERATOR+CARD_NAME);
+		return PropertyHelper.getInstance().resolveValue(getIdentifier() + SEPARATOR + CARD_NAME);
 	}
 
-//	1) Go to a specific place, if unowned you can buy, if owned pay 2x the rent normally paied
+//	1) Go to a specific place, if unowned you can buy, if owned pay 2x the rent normally paid
 //	2) Go to a specific place / back 3 spaces and do not collect 200 if you pass go
 //	6) Get out of jail free
 //	Aaron
