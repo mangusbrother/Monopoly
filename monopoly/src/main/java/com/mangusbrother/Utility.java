@@ -1,12 +1,14 @@
 package com.mangusbrother;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @author samanthacatania
  * @since 15/01/2016.
  */
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class Utility extends Property {
 
     public Utility(String name) {
@@ -16,7 +18,7 @@ public class Utility extends Property {
     @Override
     public double calculateRent(int dice) {
         Player owner = getOwner();
-        if (owner == null)
+        if (owner == null || isMortgaged())
             return 0;
         else {
             if (owner.getGroup(PropertyType.UTILITY).size() == 1)

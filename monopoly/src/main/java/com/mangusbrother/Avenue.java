@@ -1,8 +1,15 @@
 package com.mangusbrother;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 /**
- * Created by samanthacatania on 15/01/2016.
+ * @author samanthacatania
+ * @since 15/01/2016.
  */
+
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class Avenue extends Property {
 
     private double[] rent;
@@ -21,6 +28,8 @@ public class Avenue extends Property {
     public double calculateRent(int dice) {
         Player owner = getOwner();
         if (owner == null)
+            return 0;
+        else if (isMortgaged())
             return 0;
         else {
             int size = owner.getGroup(getType()).size();

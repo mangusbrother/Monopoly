@@ -29,17 +29,15 @@ public abstract class Property {
 
     public abstract double calculateRent(int dice);
 
-    public double mortgage() {
+    public void mortgage() {
         if (mortgaged)
             throw new IllegalStateException("Property Already Mortgaged");
 
         mortgaged = true;
         owner.incrementBalance(mortgagePrice);
-
-        return owner.getBalance();
     }
 
-    public double buyBack() throws InsufficientFundsException {
+    public void buyBack() throws InsufficientFundsException {
         if (!mortgaged)
             throw new IllegalStateException("Property Not Mortgaged");
 
@@ -48,8 +46,17 @@ public abstract class Property {
 
         mortgaged = false;
         owner.decrementBalance(mortgagePrice);
+    }
 
-        return owner.getBalance();
+    public void buy(Player p) throws InsufficientFundsException {
+        p.buy(this);
+        owner = p;
+    }
+
+    public void auction(Player winner, double price) throws InsufficientFundsException {
+        winner.buyAuction(this, price);
+        owner.sellAuction(this, price);
+        owner = winner;
     }
 
     public enum PropertyType {

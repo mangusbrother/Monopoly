@@ -2,13 +2,13 @@ package com.mangusbrother;
 
 //@Component
 public class PropertyHelper {
-	
-//	@Autowired 
-	private GameConfiguration gameConfiguration;
-	
+
 	private static PropertyHelper INSTANCE = new PropertyHelper();
-	
-	private PropertyHelper() { };
+	//	@Autowired
+	private GameConfiguration gameConfiguration;
+
+	private PropertyHelper() {
+	}
 	
 	public static PropertyHelper getInstance() { return INSTANCE; }
 	
