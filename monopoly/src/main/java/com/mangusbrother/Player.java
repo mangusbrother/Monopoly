@@ -3,19 +3,20 @@ package com.mangusbrother;
 import lombok.Data;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by samanthacatania on 15/01/2016.
  */
 @Data
 public class Player {
-    int position;
+    private int position;
 
-    double balance = 1500;
-    List<Property> property;
+    private double balance = 1500;
+    private List<Property> property;
 
-    boolean jailed;
-    List<Card> jail;
+    private boolean jailed;
+    private List<Card> jail;
 
     public double incrementBalance(double toAdd) {
         balance += toAdd;
@@ -34,5 +35,9 @@ public class Player {
         decrementBalance(amount);
         otherPlayer.incrementBalance(amount);
         return balance;
+    }
+
+    public List<Property> getGroup(Property.PropertyType type) {
+        return property.stream().filter(p -> p.getType() == type).collect(Collectors.toList());
     }
 }
