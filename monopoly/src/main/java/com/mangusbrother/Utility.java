@@ -27,4 +27,9 @@ public class Utility extends Property {
                 return 10 * dice;
         }
     }
+
+    @Override
+    public boolean action(Player player, int dice) throws InsufficientFundsException {
+        return false;
+    }
 }

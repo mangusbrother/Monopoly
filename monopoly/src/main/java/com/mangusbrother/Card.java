@@ -3,7 +3,7 @@ package com.mangusbrother;
 public abstract class Card {
 
 	public static final String SEPARATOR = ".";
-	public static final String CARD_NAME = "NAME";
+	private static final String CARD_NAME = "NAME";
 	
 	protected abstract String getIdentifier();
 	

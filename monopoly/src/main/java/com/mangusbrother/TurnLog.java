@@ -1,30 +1,31 @@
 package com.mangusbrother;
 
+import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.Map;
 
 @Component
 public class TurnLog {
 
-	private static TurnLog INSTANCE = new TurnLog();
+	private static final TurnLog INSTANCE = new TurnLog();
+	private final Map<Integer, StringBuilder> turnLog = new HashMap<>();
 	
 	private TurnLog() { }
 	
 	public static TurnLog getInstance() { return INSTANCE; }
 	
-	private Map<Integer, StringBuilder> turnLog = new HashMap<>();
-	
 	public void addLog(final int turnCount, final String log) {
-		final StringBuilder stringBuilder = turnLog.get(new Integer(turnCount));
+		StringBuilder stringBuilder = turnLog.get(turnCount);
 		if (stringBuilder == null) {
 			stringBuilder = new StringBuilder();
-			turnLog.put(new Integer(turnCount), stringBuilder);
+			turnLog.put(turnCount, stringBuilder);
 		}
-		stringBuilder.append(log+"\n");
+		stringBuilder.append(log).append("\n");
 	}
 	
 	public String getTurnLog(final int turnCount) {
-		final StringBuilder stringBuilder = turnLog.get(new Integer(turnCount));
+		final StringBuilder stringBuilder = turnLog.get(turnCount);
 		return stringBuilder == null ? "" : stringBuilder.toString();
 	}
 }

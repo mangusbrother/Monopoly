@@ -1,6 +1,5 @@
 package com.mangusbrother.centralCards.EmptyBottleCards.impl;
 
-import com.mangusbrother.cardTypes.MoveToNearestPlace;
 import com.mangusbrother.cardTypes.MoveToNearestPlaceDiceRoll;
 import com.mangusbrother.centralCards.EmptyBottleCards.EmptyBottleCard;
 

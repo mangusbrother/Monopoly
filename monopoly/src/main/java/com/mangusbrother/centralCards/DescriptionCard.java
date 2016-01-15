@@ -5,10 +5,10 @@ import com.mangusbrother.PropertyHelper;
 
 public abstract class DescriptionCard extends Card {
 
-	public static final String CARD_DESCRIPTION = "DESCRIPTION";
+	private static final String CARD_DESCRIPTION = "DESCRIPTION";
 	
 	public String getCardDescription() {
-		return PropertyHelper.getInstance().resolveValue(getIdentifier()+SEPERATOR+CARD_DESCRIPTION);
+		return PropertyHelper.getInstance().resolveValue(getIdentifier() + " " + CARD_DESCRIPTION);
 	}
 	
 }

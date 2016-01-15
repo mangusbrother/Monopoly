@@ -12,10 +12,10 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class Avenue extends Property {
 
-    private double[] rent;
+    private final double[] rent;
+    private final double buildingCost;
+    private final int groupSize;
     private int buildings;
-    private double buildingCost;
-    private int groupSize;
 
     public Avenue(String name, double price, PropertyType type, double mortgagePrice, int groupSize, double buildingCost, double[] rent) {
         super(name, price, type, mortgagePrice);
@@ -50,18 +50,5 @@ public class Avenue extends Property {
 
         getOwner().decrementBalance(buildingCost);
         buildings++;
-    }
-
-    @Override
-    public boolean action(Player player, int dice) throws InsufficientFundsException {
-
-        if (getOwner() == null)
-            return true;
-        double rent = calculateRent(dice);
-
-        player.payRent(rent);
-        getOwner().incrementBalance(rent);
-
-        return false;
     }
 }

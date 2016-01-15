@@ -3,7 +3,7 @@ package com.mangusbrother;
 //@Component
 public class PropertyHelper {
 
-	private static PropertyHelper INSTANCE = new PropertyHelper();
+	private static final PropertyHelper INSTANCE = new PropertyHelper();
 	//	@Autowired
 	private GameConfiguration gameConfiguration;
 

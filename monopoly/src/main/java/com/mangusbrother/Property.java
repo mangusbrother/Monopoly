@@ -8,13 +8,12 @@ import lombok.Data;
  */
 @Data
 public abstract class Property implements Step {
+    private final String name;
+    private final double price;
+    private final PropertyType type;
+    private final double mortgagePrice;
     private Player owner;
-
-    private String name;
-    private double price;
-    private PropertyType type;
     private boolean mortgaged;
-    private double mortgagePrice;
 
     public Property(String name, double price, PropertyType type, double mortgagePrice) {
         this.name = name;
@@ -57,6 +56,19 @@ public abstract class Property implements Step {
         winner.buyAuction(this, price);
         owner.sellAuction(this, price);
         owner = winner;
+    }
+
+    @Override
+    public boolean action(Player player, int dice) throws InsufficientFundsException {
+
+        if (getOwner() == null)
+            return true;
+        double rent = calculateRent(dice);
+
+        player.payRent(rent);
+        getOwner().incrementBalance(rent);
+
+        return false;
     }
 
     public enum PropertyType {

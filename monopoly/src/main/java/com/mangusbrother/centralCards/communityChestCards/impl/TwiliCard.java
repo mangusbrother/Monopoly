@@ -1,6 +1,5 @@
 package com.mangusbrother.centralCards.communityChestCards.impl;
 
-import com.mangusbrother.cardTypes.GetOutOfJailCard;
 import com.mangusbrother.cardTypes.MoveSpecificPlaceCard;
 import com.mangusbrother.centralCards.communityChestCards.CommunityChestCard;
 
