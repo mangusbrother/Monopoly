@@ -3,7 +3,8 @@ package com.mangusbrother;
 import lombok.Data;
 
 /**
- * Created by samanthacatania on 15/01/2016.
+ * @author samanthacatania
+ * @since 15/01/2016.
  */
 @Data
 public abstract class Property {
@@ -28,8 +29,31 @@ public abstract class Property {
 
     public abstract double calculateRent(int dice);
 
+    public double mortgage() {
+        if (mortgaged)
+            throw new IllegalStateException("Property Already Mortgaged");
+
+        mortgaged = true;
+        owner.incrementBalance(mortgagePrice);
+
+        return owner.getBalance();
+    }
+
+    public double buyBack() throws InsufficientFundsException {
+        if (!mortgaged)
+            throw new IllegalStateException("Property Not Mortgaged");
+
+        if (owner.getBalance() < mortgagePrice)
+            throw new InsufficientFundsException(mortgagePrice - owner.getBalance());
+
+        mortgaged = false;
+        owner.decrementBalance(mortgagePrice);
+
+        return owner.getBalance();
+    }
+
     public enum PropertyType {
-        UTILITY, STATION, BROWN, BLUE, PINK, ORANGE, RED, YELLOW, GREEN, PURPLE
+        UTILITY, RAILROAD, BROWN, BLUE, PINK, ORANGE, RED, YELLOW, GREEN, PURPLE
     }
 }
 

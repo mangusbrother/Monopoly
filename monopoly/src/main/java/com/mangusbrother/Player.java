@@ -6,7 +6,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Created by samanthacatania on 15/01/2016.
+ * @author samanthacatania
+ * @since 15/01/2016.
  */
 @Data
 public class Player {
