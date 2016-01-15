@@ -29,7 +29,7 @@ public abstract class Property {
     public abstract double calculateRent(int dice);
 
     public enum PropertyType {
-        UTILITY, STATION, BROWN, BLUE, PINK, ORANGE, RED, YELLOW, GREEN, PURPLE
+        UTILITY, RAILROAD, BROWN, BLUE, PINK, ORANGE, RED, YELLOW, GREEN, PURPLE
     }
 }
 
