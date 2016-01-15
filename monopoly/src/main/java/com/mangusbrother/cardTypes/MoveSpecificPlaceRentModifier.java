@@ -5,7 +5,7 @@ package com.mangusbrother.cardTypes;
  * @author Aaron Axisa
  *
  */
-public interface MoveSpecificPlaceRentModifier extends MoveStepsCard {
+public interface MoveSpecificPlaceRentModifier extends MoveSpecificPlaceCard {
 
 	int getRentModifier();
 }
