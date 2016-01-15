@@ -5,6 +5,7 @@ import com.mangusbrother.centralCards.communityChestCards.CommunityChestCard;
 import lombok.Data;
 
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Data
 public class Game {
@@ -16,11 +17,18 @@ public class Game {
 
     public void rollDice(Player player) {
         // TODO: Random
-        int dice = 1;
+        int dice = ThreadLocalRandom.current().nextInt(1, 7);
 
         try {
             int index = (player.getPosition() + dice) % board.size();
+
+            int passedGo = (player.getPosition() + dice) / board.size();
+            if (index == 0) passedGo--;
+            if (passedGo != 0)
+                player.incrementBalance(200 * passedGo);
+
             player.setPosition(index);
+
             if (board.get(index).action(player, 1))
                 System.out.println("User Can Buy The Property");
         } catch (InsufficientFundsException e) {
