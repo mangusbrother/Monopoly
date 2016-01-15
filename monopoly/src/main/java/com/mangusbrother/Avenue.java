@@ -51,4 +51,17 @@ public class Avenue extends Property {
         getOwner().decrementBalance(buildingCost);
         buildings++;
     }
+
+    @Override
+    public boolean action(Player player, int dice) throws InsufficientFundsException {
+
+        if (getOwner() == null)
+            return true;
+        double rent = calculateRent(dice);
+
+        player.payRent(rent);
+        getOwner().incrementBalance(rent);
+
+        return false;
+    }
 }

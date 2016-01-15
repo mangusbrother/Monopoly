@@ -1,5 +1,7 @@
 package com.mangusbrother;
 
+import org.springframework.stereotype.Component;
+
 @Component
 public class GameConfiguration {
 	/**

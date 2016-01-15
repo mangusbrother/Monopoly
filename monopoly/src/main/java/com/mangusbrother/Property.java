@@ -7,7 +7,7 @@ import lombok.Data;
  * @since 15/01/2016.
  */
 @Data
-public abstract class Property {
+public abstract class Property implements Step {
     private Player owner;
 
     private String name;

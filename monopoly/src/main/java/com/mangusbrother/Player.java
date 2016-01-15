@@ -62,4 +62,11 @@ public class Player {
         incrementBalance(price);
         property.remove(p);
     }
+
+    public void payRent(double rent) throws InsufficientFundsException {
+        if (balance < rent)
+            throw new InsufficientFundsException(rent - balance);
+
+        decrementBalance(rent);
+    }
 }
